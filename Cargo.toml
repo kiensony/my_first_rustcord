@@ -1,0 +1,11 @@
+[package]
+name = "my_first_rustcord"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+serenity = { version = "0.12", default-features = false, features = ["client", "gateway", "model", "standard_framework", "utils", "rustls_backend"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
+chrono = "0.4"
+tracing = "0.1"
