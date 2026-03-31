@@ -4,11 +4,11 @@ use serenity::{
     prelude::*,
 };
 
-use crate::func::helpers::extract_user_id;
+use super::helpers::extract_user_id;
 
 #[command]
-#[required_permissions("KICK_MEMBERS")]
-pub async fn kick(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
+#[required_permissions("BAN_MEMBERS")]
+pub async fn ban(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
     let guild_id = msg
         .guild_id
         .ok_or_else(|| "This command can only be used in a server.")?;
@@ -21,11 +21,11 @@ pub async fn kick(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult
     };
 
     guild_id
-        .kick_with_reason(ctx, user_id, reason)
+        .ban_with_reason(ctx, user_id, 0, reason)
         .await
-        .map_err(|e| format!("Failed to kick user: {e}"))?;
+        .map_err(|e| format!("Failed to ban user: {e}"))?;
 
-    msg.reply(ctx, format!("Kicked <@{user_id}>: {reason}"))
+    msg.reply(ctx, format!("Banned <@{user_id}>: {reason}"))
         .await?;
     Ok(())
 }

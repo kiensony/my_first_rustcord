@@ -4,7 +4,7 @@ use serenity::{
     prelude::*,
 };
 
-use crate::func::helpers::{extract_role_id, extract_user_id};
+use super::helpers::{extract_role_id, extract_user_id};
 
 #[command]
 #[required_permissions("MANAGE_ROLES")]

@@ -5,7 +5,7 @@ use serenity::{
     prelude::*,
 };
 
-use crate::func::helpers::extract_user_id;
+use super::helpers::extract_user_id;
 
 #[command]
 #[required_permissions("MANAGE_NICKNAMES")]
